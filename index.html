@@ -92,102 +92,22 @@
       
         <hr>
 <h2 id="本地安装、部署、测试预览"><a href="#本地安装、部署、测试预览" class="headerlink" title="本地安装、部署、测试预览"></a>本地安装、部署、测试预览</h2><ul>
-<li><p>下载并安装<a href="https://git-scm.com/downloads" target="_blank" rel="external">Git</a>，以及<a href="http://www.cnblogs.com/ayseeing/p/3572582.html" target="_blank" rel="external">配置ssh key</a>。当然，如果你是Github老司机的话请忽略该步。</p>
+<li><p>下载并安装<a href="https://git-scm.com/downloads">Git</a>，以及<a href="http://www.cnblogs.com/ayseeing/p/3572582.html">配置ssh key</a>。当然，如果你是Github老司机的话请忽略该步。</p>
 </li>
-<li><p>下载并安装<a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">NodeJS</a>。</p>
+<li><p>下载并安装<a href="https://nodejs.org/zh-cn/">NodeJS</a>。</p>
 </li>
 <li><p>打开命令行工具，输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
 <p>  这个需要一点时间，看网速。我就等了数分钟。这一步完成就可以开始使用<code>Hexo</code>了。</p>
-</li>
-<li><p>进入您想要存放博客项目的文件夹，输入以下命令初始化工作区：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
-<p>  这个步骤也需要几分钟。初始化完成后，得到如下大致的目录结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">node_modules</div><div class="line">scaffolds</div><div class="line">source</div><div class="line">  _posts</div><div class="line">    hello-world.md</div><div class="line">themes</div><div class="line">.gitignore</div><div class="line">_config.yml</div><div class="line">package.json</div></pre></td></tr></table></figure>
-<p>  若你的没有<code>node_modules</code>和<code>.gitignore</code>，也不用担心，它们不是重点。<code>_config.yml</code>是整个博客的全局配置，<code>source</code>是存放生成博客内容所需资源的地方，<code>source/_posts</code>是文章的默认存放处，<code>themes</code>是博客主题的存放点，<code>scaffolds</code>是模板的存放点，这里的模板指的是新建文章的初始内容，Hexo已经默认在此文件夹生成了<code>post.md</code> <code>page.md</code> <code>draft.md</code>这三种模板。</p>
-</li>
-<li><p>此时您的博客处于最初的状态，一切配置的默认值都由<code>Hexo</code>设置好了，并且<code>source</code>文件夹的<code>_post</code>文件夹里面有一篇名为<code>hello-world.md</code>的<code>markdown</code>文件，这就是<code>Hexo</code>为您生成的第一篇示例用的文章。对的，在<code>Hexo</code>里就是用<code>markdown</code>来写文章的。想看看您的博客最初长啥样？赶快生成内容吧！输入如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate</div></pre></td></tr></table></figure>
-<p>  这一步完成后，目录里会多了个<code>public</code>文件夹，里面就是您的博客内容了。</p>
-</li>
-<li><p>生成了之后怎么看？启动<code>Hexo</code>的测试服务器吧。输入如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure>
-<p>  <code>Hexo</code>默认指定端口是<code>4000</code>，所以打开<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>就能看到你的博客长啥样了。要是你的4000端口被占用了，可以换个端口：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server -p 8888</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>　　至此，您已经成功部署<code>Hexo</code>，并成功在本地搭建起个人博客的<code>Hello World</code>了，但也仅仅是本地能看到而已，那如何放到<code>Github</code>上让大家能看到呢？</p>
-<hr>
-<h2 id="发布到Github-Page"><a href="#发布到Github-Page" class="headerlink" title="发布到Github Page"></a>发布到Github Page</h2><ul>
-<li><code>Github Page</code>有两种类型，一种是个人/企业主页，另一种是项目主页。前者每个<code>Github</code>账号只能有一个，后者能有无数个。这里以个人/企业主页为例，创建步骤跟平时在<code>Github</code>上创建一般的<code>Repository</code>是类似的，只是对仓库的名字有点要求，必须是<code>你的用户名.github.io</code>，如：</li>
-</ul>
-<p><img src="http://obw0x5bwh.bkt.clouddn.com/hexo-and-github-page-build-blog/image/00.png" alt="仓库名字要这么写"></p>
-<ul>
-<li><p>修改博客文件夹根目录下的<code>_config.yml</code>，确保<code>deploy</code>部分配置填写正确，这里以<code>git</code>推送到<code>Github</code>为例：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> git</div><div class="line"><span class="attr">  repo:</span> git@github.com:lgcagithub/lgcagithub.github.io.git</div></pre></td></tr></table></figure>
-<p>  <code>type</code>就是部署工具的类型，这里就是<code>git</code>。<code>repo</code>就是你的<code>Github Page</code>的<code>repository</code>地址，这里填的是我的<code>Github Page</code>地址的<code>ssh</code>形式（当然，之前要<a href="http://www.cnblogs.com/ayseeing/p/3572582.html" target="_blank" rel="external">部署好ssh key</a>）。更多工具和推送类型请参考<a href="https://hexo.io/zh-cn/docs/deployment.html" target="_blank" rel="external">官方文档</a>。</p>
-</li>
-<li><p>配置完之后还没完，还要下载一个插件，用来让<code>Hexo</code>能用<code>git</code>进行推送，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-<p>  其实这个命令在背后也是到Github上拉代码了，因为这个插件项目在Github上……</p>
-</li>
-<li><p>现在可以发布了，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy</div></pre></td></tr></table></figure>
-<p>  这一步会在博客根目录创建<code>.deploy*</code>文件夹，用<code>git</code>的话就变成了<code>.deploy_git</code>，然后<code>hexo</code>会将之前<code>generate</code>出来的<code>public</code>文件夹中的内容全部拷贝到<code>.deploy_git</code>文件夹，并把它们全都提交到之前在<code>_config.yml</code>中指定的<code>repository</code>地址。</p>
-</li>
-</ul>
-<p>　　现在，如果你直接打开在<code>Github</code>上的博客<code>repository</code>的话，出来的还是你的项目文件列表，你必须在浏览器地址栏输入<code>你的用户名.github.io</code>才能正确打开博客。从此刻开始，你的博客将可以被世界各地的人访问啦！</p>
-<hr>
-<h2 id="创建新文章并发布"><a href="#创建新文章并发布" class="headerlink" title="创建新文章并发布"></a>创建新文章并发布</h2><ul>
-<li><p>新建文章的命令格式是这样子的：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new [layout] &lt;title&gt;</div></pre></td></tr></table></figure>
-<p>  <code>layout</code>是可选参数，但是<code>title</code>一定要提供，且<code>title</code>若包含空格则需要用双引号括起来。Hexo默认提供3种<code>layout</code>，我觉得这个参数叫<code>layout</code>不太合适，很容易跟<code>themes</code>里面的<code>layout</code>搞混，其实它指的是<code>scaffolds</code>文件夹内的模板<code>post</code> <code>page</code> <code>draft</code>，除此之外也可以自己在这个文件夹里新增自定义模板。这三种模板生成的文章对应的所在路径为：</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">模板</th>
-<th style="text-align:left">路径</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">post</td>
-<td style="text-align:left">source/_posts</td>
-</tr>
-<tr>
-<td style="text-align:center">page</td>
-<td style="text-align:left">source</td>
-</tr>
-<tr>
-<td style="text-align:center">draft</td>
-<td style="text-align:left">source/_drafts</td>
-</tr>
-</tbody>
-</table>
-<p>自定义模板的路径与post的一样。</p>
-<ul>
-<li><p>当你想立刻开写的时候，直接就：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"new post title"</span></div></pre></td></tr></table></figure>
-<p>  当你想创建草稿的时候，可以这样：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new draft <span class="string">"new draft title"</span></div></pre></td></tr></table></figure>
-<p>  创建的草稿将会存放到<code>source/_drafts</code>，这将不会被<code>hexo generate</code>进行处理。如果你想发布草稿了，可以输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo publish draft <span class="string">"your draft title"</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><code>hexo</code>的文章都是用<code>markdown</code>来书写的，可以到<a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">Cmd Markdown 编辑阅读器</a>来边学边用，一点也不难，而且还很有趣，妈妈再也不用担心我不会<code>Markdown</code>。比如你们现在看的这篇文章就是我边学边写的。</p>
-</li>
-<li><p>文章写完后，输入<code>hexo server</code>启动本地服务器预览，觉得OK就可以输入<code>hexo deploy</code>发布啦~</p>
-</li>
-</ul>
-<hr>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>　　至此，您已经知道如何安装Hexo、本地部署测试，如何将博客部署到<code>Github Page</code>，以及如何发表新文章。现在就开始您的分享之旅吧！<br>　　值得一提的是，部署到<code>Github Page</code>的只是你已经生成的博客内容，并不是你的博客<code>Hexo</code>工程。假如有一天你的电脑坏了或者要换电脑了，只凭<code>Github Page</code>中那点内容是还原不回整个工程的，那么你的<code>Markdown</code>原稿也就没了，所以<strong>我建议到<code>Github</code>上再开一个普通<code>Repository</code>来存放您的博客工程</strong>。</p>
-<p>　　本文就先唠叨那么多，下一篇文章看看如何更换主题。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/08/14/hexo-and-github-page-build-blog/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lgcagithub.github.io/2016/08/14/hexo-and-github-page-build-blog/" data-id="cirug4cq60001hoqsop11vblv" class="article-share-link">Share</a>
+      <a data-url="http://lgcagithub.github.io/2016/08/14/hexo-and-github-page-build-blog/" data-id="cirukootm0001v0qsefrpfq2k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Page/">Github Page</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建博客/">搭建博客</a></li></ul>
@@ -221,20 +141,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/08/13/hello-world/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lgcagithub.github.io/2016/08/13/hello-world/" data-id="cirug4cpj0000hoqsm936e58m" class="article-share-link">Share</a>
+      <a data-url="http://lgcagithub.github.io/2016/08/13/hello-world/" data-id="cirukootf0000v0qste65u8c7" class="article-share-link">Share</a>
       
       
     </footer>
