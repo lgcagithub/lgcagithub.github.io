@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用多说给Hexo生成的博客增加评论功能 | 阳光灿烂</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言　　文章的价值除了只是利用博客展示给他人阅读之外，更多地来自于阅读者之间的讨论。所以给自己的博客文章加入评论功能是非常必要的。然而Hexo只是个纯静态网站生成器，只生成浏览器可以解析的网页内容，并不涉及到服务端的东西，而自己也不想费时费力去搞一个评论功能的服务端逻辑。即使有服务端代码，Github也不允许你运行。所以对于像我这种纠结的人来说，使用国内的“多说”最好不过了╮(╯▽╰)╭。那为嘛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用多说给Hexo生成的博客增加评论功能">
+<meta property="og:url" content="http://lgcagithub.github.io/2016/08/15/add-comments-for-blog-using-duoshuo/index.html">
+<meta property="og:site_name" content="阳光灿烂">
+<meta property="og:description" content="前言　　文章的价值除了只是利用博客展示给他人阅读之外，更多地来自于阅读者之间的讨论。所以给自己的博客文章加入评论功能是非常必要的。然而Hexo只是个纯静态网站生成器，只生成浏览器可以解析的网页内容，并不涉及到服务端的东西，而自己也不想费时费力去搞一个评论功能的服务端逻辑。即使有服务端代码，Github也不允许你运行。所以对于像我这种纠结的人来说，使用国内的“多说”最好不过了╮(╯▽╰)╭。那为嘛">
+<meta property="og:image" content="http://obw0x5bwh.bkt.clouddn.com/add-comments-for-blog-using-duoshuo/image/00.png">
+<meta property="og:updated_time" content="2016-08-14T17:47:11.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用多说给Hexo生成的博客增加评论功能">
+<meta name="twitter:description" content="前言　　文章的价值除了只是利用博客展示给他人阅读之外，更多地来自于阅读者之间的讨论。所以给自己的博客文章加入评论功能是非常必要的。然而Hexo只是个纯静态网站生成器，只生成浏览器可以解析的网页内容，并不涉及到服务端的东西，而自己也不想费时费力去搞一个评论功能的服务端逻辑。即使有服务端代码，Github也不允许你运行。所以对于像我这种纠结的人来说，使用国内的“多说”最好不过了╮(╯▽╰)╭。那为嘛">
+<meta name="twitter:image" content="http://obw0x5bwh.bkt.clouddn.com/add-comments-for-blog-using-duoshuo/image/00.png">
+  
+    <link rel="alternate" href="/atom.xml" title="阳光灿烂" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">阳光灿烂</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">的码屌</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lgcagithub.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-add-comments-for-blog-using-duoshuo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/15/add-comments-for-blog-using-duoshuo/" class="article-date">
+  <time datetime="2016-08-14T16:10:04.000Z" itemprop="datePublished">2016-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用多说给Hexo生成的博客增加评论功能
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　文章的价值除了只是利用博客展示给他人阅读之外，更多地来自于阅读者之间的讨论。所以给自己的博客文章加入评论功能是非常必要的。然而<code>Hexo</code>只是个纯静态网站生成器，只生成浏览器可以解析的网页内容，并不涉及到服务端的东西，而自己也不想费时费力去搞一个评论功能的服务端逻辑。即使有服务端代码，<code>Github</code>也不允许你运行。所以对于像我这种纠结的人来说，使用国内的“多说”最好不过了╮(╯▽╰)╭。那为嘛不使用<code>Hexo</code>自带的<code>Disqus</code>呢？因为它的服务商在墙外呀，看着别人的博客用了<code>Disqus</code>，等了半天都加载不出来，2333333333。<br>　　废话不多说，立刻开始。</p>
+<a id="more"></a>
+<h2 id="创建多说站点"><a href="#创建多说站点" class="headerlink" title="创建多说站点"></a>创建多说站点</h2><p>　　如果是首次使用多说，你必须申请多说账号。如果是首次使用多说的插件，你必须创建多说站点。申请多说账号并登陆之后，点主页中的“我要安装”进入创建站点页面。</p>
+<p><img src="http://obw0x5bwh.bkt.clouddn.com/add-comments-for-blog-using-duoshuo/image/00.png" alt="创建站点页面"></p>
+<p>“站点名称”随便填入一个好记的名称就行了，比如你博客的<code>Title</code>。“站点地址”就填入你博客的地址，注意分清是<code>http</code>还是<code>https</code>。“多说域名”里那个红箭头指的框框中填入的东西等下是要在博客配置中引用的。接下来的邮箱、QQ号、手机号啥的你自己搞定。</p>
+<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><p>　　在博客根目录下的<code>_config.yml</code>的最后面加入：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">duoshuo_shortname:</span> lgcagithub</div></pre></td></tr></table></figure></p>
+<p><code>lgcagithub</code>就是之前红箭头指的内容。</p>
+<h2 id="修改博客主题模板"><a href="#修改博客主题模板" class="headerlink" title="修改博客主题模板"></a>修改博客主题模板</h2><p>　　找到博客根目录下的<code>themes/landscape/layout/_partial/article.ejs</code>，将里面的：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (!<span class="attr">index</span> &amp;&amp; <span class="attr">post.comments</span> &amp;&amp; <span class="attr">config.disqus_shortname</span>)&#123; %&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">id</span>=<span class="string">"comments"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"disqus_thread"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">noscript</span>&gt;</span>Please enable JavaScript to view the <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;</span>comments powered by Disqus.<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div></pre></td></tr></table></figure></p>
+<p>改为：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (!<span class="attr">index</span> &amp;&amp; <span class="attr">post.comments</span> &amp;&amp; <span class="attr">config.duoshuo_shortname</span>)&#123; %&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">id</span>=<span class="string">"comments"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说评论框 start --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ds-thread"</span> <span class="attr">data-thread-key</span>=<span class="string">"&lt;%= post.layout %&gt;-&lt;%= post.slug %&gt;"</span> <span class="attr">data-title</span>=<span class="string">"&lt;%= post.title %&gt;"</span> <span class="attr">data-url</span>=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说评论框 end --&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="xml"></span></div><div class="line">var duoshuoQuery = &#123;short_name:'<span class="tag">&lt;<span class="name">%=</span> <span class="attr">config.duoshuo_shortname</span> %&gt;</span>'&#125;;</div><div class="line">  (function() &#123;</div><div class="line">    var ds = document.createElement('script');</div><div class="line">    ds.type = 'text/javascript';ds.async = true;</div><div class="line">    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';</div><div class="line">    ds.charset = 'UTF-8';</div><div class="line">    (document.getElementsByTagName('head')[0] </div><div class="line">     || document.getElementsByTagName('body')[0]).appendChild(ds);</div><div class="line">  &#125;)();</div><div class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div></pre></td></tr></table></figure></p>
+<p>上述代码来源于<a href="http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9" target="_blank" rel="external">http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9</a> 。</p>
+<p>　　至此，你已经完成给博客添加评论功能的工作。保存，生成，发布到<code>Github Page</code>吧。点进任意一篇文章，拉到最下面就能看到你的成果了，评论、点赞、喜欢、分享样样都行，是不是很爽~\(≧▽≦)/~。</p>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>　　上面那段代码居然有那么强大的功能，怎么做到的？让我们来分析分析。</p>
+<ul>
+<li>首先是<code>&lt;% %&gt;</code>括起来的代码是ejs的逻辑代码，这里主要判断了文章评论功能是否开启以及博客配置中是否有<code>duoshuo_shortname</code>这个属性，我们刚刚就配置了。判断通过就继续格式化处理接着的代码。</li>
+<li>跟着来的是<code>&lt;section&gt;</code>标签，这其实是跟原来<code>Disqus</code>的代码是一样的，我们改动的只是<code>&lt;section&gt;</code>标签对括起来的东西。</li>
+<li>首先是<code>&lt;div&gt;</code>标签对，属性<code>class=&quot;ds-thread&quot;</code>代表这是评论框的所在，根据官方文档的说明，属性<code>data-thread-key</code>要求赋予当前文章的ID，没ID咋办？反正就给它一点能独一无二标志的值就行了，这里填的是<code>post</code>的布局名+横杠+文章<code>Markdown</code>文件名，属性<code>data-title</code>填入的就是文章的标题咯，属性<code>data-url</code>是为了让有分页的文章能显示同样的评论内容，这里赋予了文章的永久链接。</li>
+<li>接着是一段<code>javascript</code>代码，声明了一个字典，字典中的<code>short_name</code>属性引用了博客配置中的<code>duoshuo_shortname</code>，接着是一个自调用函数，该函数又创建了一个<code>javascript</code>标签，该标签引用到多说官方提供的插件js代码……所以，不是这小段代码实现了评论框，最终还是官方给力啊~官方提供的js利用配置中的shorname来得知是谁在用多说，然后所有东西都在那个js里实现了。多么好的一条龙服务。→▽→</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lgcagithub.github.io/2016/08/15/add-comments-for-blog-using-duoshuo/" data-id="ciruw5ibh0000agqsx82ca31f" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多说/">多说</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/14/hexo-and-github-page-build-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用Hexo和Github Page搭建个人博客</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Disqus 的代码
+
+-->
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-add-comments-for-blog-using-duoshuo" data-title="使用多说给Hexo生成的博客增加评论功能" data-url="http://lgcagithub.github.io/2016/08/15/add-comments-for-blog-using-duoshuo/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:'lgcagithub'};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Page/">Github Page</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多说/">多说</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建博客/">搭建博客</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Github-Page/" style="font-size: 10px;">Github Page</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/多说/" style="font-size: 10px;">多说</a> <a href="/tags/搭建博客/" style="font-size: 10px;">搭建博客</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/15/add-comments-for-blog-using-duoshuo/">使用多说给Hexo生成的博客增加评论功能</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/14/hexo-and-github-page-build-blog/">用Hexo和Github Page搭建个人博客</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/13/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 阳光灿烂<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
