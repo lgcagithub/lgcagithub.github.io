@@ -5,22 +5,19 @@
   
   <title>C#中的delegate和event | 阳光灿烂</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="delegate是C#版的函数指针　　在C/C++中可以利用函数指针对函数进行引用，从而让函数可以作为参数来传递，或者作为函数结果返回，并且通过函数指针可以调用被引用的函数。而在C#中，这种类似的活儿就让delegate承包了。
-delegate的声明与使用123456789101112131415161718192021222324252627class Program&amp;#123;    /*">
+  <meta name="description" content="delegate是C#版的函数指针　　在C/C++中可以利用函数指针对函数进行引用，从而让函数可以作为参数来传递，或者作为函数结果返回，并且通过函数指针可以调用被引用的函数。而在C#中，这种类似的活儿就让delegate承包了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#中的delegate和event">
 <meta property="og:url" content="http://lgcagithub.github.io/2016/08/21/Delegate-and-Event-in-CSharp/index.html">
 <meta property="og:site_name" content="阳光灿烂">
-<meta property="og:description" content="delegate是C#版的函数指针　　在C/C++中可以利用函数指针对函数进行引用，从而让函数可以作为参数来传递，或者作为函数结果返回，并且通过函数指针可以调用被引用的函数。而在C#中，这种类似的活儿就让delegate承包了。
-delegate的声明与使用123456789101112131415161718192021222324252627class Program&amp;#123;    /*">
+<meta property="og:description" content="delegate是C#版的函数指针　　在C/C++中可以利用函数指针对函数进行引用，从而让函数可以作为参数来传递，或者作为函数结果返回，并且通过函数指针可以调用被引用的函数。而在C#中，这种类似的活儿就让delegate承包了。">
 <meta property="og:image" content="http://obw0x5bwh.bkt.clouddn.com/Delegate-and-Event-in-CSharp/image/000.png">
 <meta property="og:image" content="http://obw0x5bwh.bkt.clouddn.com/Delegate-and-Event-in-CSharp/image/001.png">
 <meta property="og:image" content="http://obw0x5bwh.bkt.clouddn.com/Delegate-and-Event-in-CSharp/image/002.png">
-<meta property="og:updated_time" content="2016-08-22T08:19:15.024Z">
+<meta property="og:updated_time" content="2016-08-22T08:21:20.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#中的delegate和event">
-<meta name="twitter:description" content="delegate是C#版的函数指针　　在C/C++中可以利用函数指针对函数进行引用，从而让函数可以作为参数来传递，或者作为函数结果返回，并且通过函数指针可以调用被引用的函数。而在C#中，这种类似的活儿就让delegate承包了。
-delegate的声明与使用123456789101112131415161718192021222324252627class Program&amp;#123;    /*">
+<meta name="twitter:description" content="delegate是C#版的函数指针　　在C/C++中可以利用函数指针对函数进行引用，从而让函数可以作为参数来传递，或者作为函数结果返回，并且通过函数指针可以调用被引用的函数。而在C#中，这种类似的活儿就让delegate承包了。">
 <meta name="twitter:image" content="http://obw0x5bwh.bkt.clouddn.com/Delegate-and-Event-in-CSharp/image/000.png">
   
     <link rel="alternate" href="/atom.xml" title="阳光灿烂" type="application/atom+xml">
@@ -98,6 +95,7 @@ delegate的声明与使用123456789101112131415161718192021222324252627class Pro
       
         <hr>
 <h2 id="delegate是C-版的函数指针"><a href="#delegate是C-版的函数指针" class="headerlink" title="delegate是C#版的函数指针"></a>delegate是C#版的函数指针</h2><p>　　在<code>C/C++</code>中可以利用函数指针对函数进行引用，从而让函数可以作为参数来传递，或者作为函数结果返回，并且通过函数指针可以调用被引用的函数。而在<code>C#</code>中，这种类似的活儿就让<code>delegate</code>承包了。</p>
+<a id="more"></a>
 <figure class="highlight csharp"><figcaption><span>delegate的声明与使用</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> <span class="title">Program</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/*delegate的声明，需要指定返回类型和参数列表，</span></div><div class="line">        这里分别是void和string str。*/</div><div class="line">    <span class="function"><span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">TestDelegate</span>(<span class="params"><span class="keyword">string</span> str</span>)</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printSomething</span>(<span class="params"><span class="keyword">string</span> str</span>)</span></div><div class="line">    &#123;</div><div class="line">        Console.WriteLine(str);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">callSomeMethods</span>(<span class="params">TestDelegate someMethods</span>)</span></div><div class="line">    &#123;</div><div class="line">        someMethods(<span class="string">"I am a delegate."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">static</span> TestDelegate <span class="title">getSomeMethods</span>(<span class="params"></span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> printSomething;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">    &#123;</div><div class="line">        TestDelegate someMethods = getSomeMethods();</div><div class="line">        callSomeMethods(someMethods);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">I am a delegate.</div></pre></td></tr></table></figure>
@@ -130,7 +128,7 @@ delegate的声明与使用123456789101112131415161718192021222324252627class Pro
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lgcagithub.github.io/2016/08/21/Delegate-and-Event-in-CSharp/" data-id="cis4scwha0003woqsd6jae0tm" class="article-share-link">分享</a>
+      <a data-url="http://lgcagithub.github.io/2016/08/21/Delegate-and-Event-in-CSharp/" data-id="cis5rx4ul0006hcqsc0vco0ty" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Delegate/">Delegate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Event/">Event</a></li></ul>
