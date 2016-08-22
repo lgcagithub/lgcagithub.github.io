@@ -14,7 +14,7 @@
 <meta property="og:image" content="http://obw0x5bwh.bkt.clouddn.com/Delegate-and-Event-in-CSharp/image/000.png">
 <meta property="og:image" content="http://obw0x5bwh.bkt.clouddn.com/Delegate-and-Event-in-CSharp/image/001.png">
 <meta property="og:image" content="http://obw0x5bwh.bkt.clouddn.com/Delegate-and-Event-in-CSharp/image/002.png">
-<meta property="og:updated_time" content="2016-08-22T08:21:20.171Z">
+<meta property="og:updated_time" content="2016-08-22T08:31:10.628Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#中的delegate和event">
 <meta name="twitter:description" content="delegate是C#版的函数指针　　在C/C++中可以利用函数指针对函数进行引用，从而让函数可以作为参数来传递，或者作为函数结果返回，并且通过函数指针可以调用被引用的函数。而在C#中，这种类似的活儿就让delegate承包了。">
@@ -100,6 +100,7 @@
 <p>输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">I am a delegate.</div></pre></td></tr></table></figure>
 <p>　　可以看到，要声明一个delegate需要<strong>delegate关键字、返回类型、delegate名称、参数列表</strong>这四个部分，其中参数列表可以为空。就拿这里的<code>TestDelegate</code>来说，这相当于在C/C++写下<code>typedef void (*TestDelegate)(string str)</code>。很明显，delegate的声明比函数指针的声明来得要简洁，而且目的性也更强：<code>typedef</code>关键字在C/C++中表示声明一种任意类型的别名，不一定是函数指针，而<code>delegate</code>在C#中就只是用来声明对一种类型函数的引用。</p>
+<hr>
 <h2 id="delegate的性质"><a href="#delegate的性质" class="headerlink" title="delegate的性质"></a>delegate的性质</h2><p>　　delegate与函数指针看似发挥着相同的作用，但其实delegate比函数指针更会玩，因为delegate是面向对象的和类型安全的。如何体现？</p>
 <h4 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h4><p>　　用过<code>C/C++</code>函数指针的娃十有八九会吐槽函数指针的不便性，特别是指向成员函数时，不仅声明语法恶心，而且使用起来也不够优雅，调用的时候还要知道对象实例地址才可以正确调用，比如：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> C</div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> i)</span></span></div><div class="line">    &#123; </div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"You have entered a number : "</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span>; </div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    C c;</div><div class="line">    <span class="keyword">int</span> (C::* pfn1)(<span class="keyword">int</span>) = &amp;C::fun;</div><div class="line">    (c.*pfn1)(<span class="number">8</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -115,6 +116,7 @@
 <p>输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">BuyerA buy 南方日报.</div><div class="line">BuyerB buy 南方日报.</div><div class="line">BuyerC buy 南方日报.</div><div class="line">BuyerB buy 广州日报.</div><div class="line">BuyerC buy 广州日报.</div><div class="line">BuyerB buy 人民日报.</div><div class="line">BuyerC buy 人民日报.</div></pre></td></tr></table></figure>
 <p>　　可以看到，delegate可以保存一堆函数引用，还能增加移除函数引用，就像个容器一样。不过，delegate没有对函数引用检查重复，所以即使你多次增加同样对象的同样方法程序也不会报错，而是按部就班地执行多次同样的方法，同样地，移除的时候也要移除多次才能干净。这些我就不在代码中体现了。</p>
+<hr>
 <h2 id="delegate破坏了封装性？"><a href="#delegate破坏了封装性？" class="headerlink" title="delegate破坏了封装性？"></a>delegate破坏了封装性？</h2><p>　　仔细的你会发现在上面的代码中，<code>NewpaperSaler</code>这个类中的delegate被声明为<code>public</code>，这破坏了面向对象中讲究的封装性。这很不安全，这意味着对象成员可以随便被外界更改，比如上面代码中如果<code>saler.newspaperPublishNotify -= buyerA.Buy;</code>不小心写成了<code>saler.newspaperPublishNotify = buyerA.Buy;</code>，结果就变成这样了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">BuyerA buy 南方日报.</div><div class="line">BuyerB buy 南方日报.</div><div class="line">BuyerC buy 南方日报.</div><div class="line">BuyerA buy 广州日报.</div><div class="line">BuyerA buy 人民日报.</div></pre></td></tr></table></figure>
 <p>　　A取消订阅变成了只有A订阅，BC都被挤掉了。当然，聪明的你立刻会想到把delegate由<code>public</code>改为<code>private</code>，另外再提供两个方法分别负责该delegate的增加移除函数引用。但是这样一来，delegate的使用就变得不够优雅了。其实你想到的粗重活在C#里已经提供了解决手段，那就是<code>event</code>。</p>
@@ -123,12 +125,13 @@
 <p>　　那么，对<code>newspaperPublishNotify</code>的赋值操作就会导致编译报错了，提示“<code>event</code>只能出现在<code>+=</code>或者<code>-=</code>的左边”。这就是有了delegate之后还需要event的原因。<br>　　如果打开<code>ILSpy</code>来查看程序的中间语言，就会发现其实event是封装过的delegate，C#编译器对event的处理是，声明一个private同名的delegate，另外再提供了<code>add</code>和<code>remove</code>方法来分别对该delegate进行增加、移除函数引用操作，那么就是分别对应了<code>+=</code>和<code>-=</code>操作了。</p>
 <p><img src="http://obw0x5bwh.bkt.clouddn.com/Delegate-and-Event-in-CSharp/image/002.png" alt="event的本质"></p>
 <p>　　用ILSpy还能看到很多C#的<code>dll</code>里面到底是什么，请自行快乐享用。</p>
+<hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>　　C#中的delegate是一种能存储多个函数引用的类型，该类型可以作为参数来传递，或者作为函数结果返回。通过delegate可以调用被引用的多个函数。此外，delegate还是面向对象和类型安全的。而event是对delegate的封装，限制了外界直接对delegate的重新赋值操作，以达到不破坏封装性又能方便实现事件订阅的目的。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lgcagithub.github.io/2016/08/21/Delegate-and-Event-in-CSharp/" data-id="cis5rx4ul0006hcqsc0vco0ty" class="article-share-link">分享</a>
+      <a data-url="http://lgcagithub.github.io/2016/08/21/Delegate-and-Event-in-CSharp/" data-id="cis5s9tev0000xoqsforgj2zt" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Delegate/">Delegate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Event/">Event</a></li></ul>
